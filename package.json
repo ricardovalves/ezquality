@@ -12,6 +12,25 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ezquality-sidebar-view",
+          "title": "EZ Quality",
+          "icon": "media/ezquality.svg"
+        }
+      ]
+    },
+    "views": {
+      "ezquality-sidebar-view": [
+        {
+          "type": "webview",
+          "id": "ezquality-sidebar",
+          "name": "EZ Quality",
+          "contextualTitle": "EZQuality"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "ezquality.helloWorld",
