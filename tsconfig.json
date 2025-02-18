@@ -2,15 +2,28 @@
 	"compilerOptions": {
 		"module": "Node16",
 		"target": "ES2022",
+		"outDir": "out",
 		"lib": [
 			"ES2022"
 		],
 		"sourceMap": true,
 		"rootDir": "src",
 		"strict": true,   /* enable all strict type-checking options */
+		"allowSyntheticDefaultImports": true,
+		"allowJs": false,
+		"esModuleInterop": true,
+    	"declaration": true,
 		/* Additional Checks */
 		// "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
 		// "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
 		// "noUnusedParameters": true,  /* Report errors on unused parameters. */
-	}
+	},
+	"exclude": [
+		"node_modules",
+		".vscode-test",
+		"webviews",
+		"__sapper__/*",
+		"out/*"
+	],
+	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "webviews/components/**/*.svelte"]
 }
