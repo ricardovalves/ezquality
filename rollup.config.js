@@ -7,7 +7,6 @@ import typescript from "@rollup/plugin-typescript";
 import path from "path";
 import fs from "fs";
 
-
 const production = !process.env.ROLLUP_WATCH;
 
 export default fs
@@ -24,17 +23,13 @@ export default fs
       },
       plugins: [
         svelte({
-			preprocess: sveltePreprocess({ sourceMap: !production }),
-            css: (css) => {
-                css.write(name + ".css");
-              },
-			compilerOptions: {
-				// enable run-time checks when not in production
-				dev: !production
-			}
-		}),
+			    preprocess: sveltePreprocess({ sourceMap: !production }),
+          compilerOptions: {
+            // enable run-time checks when not in production
+            dev: !production,
+			    }
+		    }),
         
-
         // If you have external dependencies installed from
         // npm, you'll most likely need these plugins. In
         // some cases you'll need additional configuration -

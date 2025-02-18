@@ -35,6 +35,16 @@
       {
         "command": "ezquality.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "ezquality.createUnitTest",
+        "title": "Create Unit Test",
+        "category": "EZ Quality"
+      },
+      {
+        "command": "ezquality.explainCode",
+        "title": "Explain Code",
+        "category": "EZ Quality"
       }
     ]
   },
@@ -53,6 +63,7 @@
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-terser": "^0.4.0",
+    "@rollup/plugin-typescript": "^11.0.0",
     "@tsconfig/svelte": "^5.0.4",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
@@ -63,18 +74,18 @@
     "@vscode/test-electron": "^2.4.1",
     "concurrently": "^9.1.2",
     "eslint": "^9.19.0",
+    "ollama": "^0.5.13",
     "rollup": "^3.15.0",
     "rollup-plugin-css-only": "^4.3.0",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^7.1.2",
     "svelte": "^3.55.0",
-    "ts-loader": "^9.5.2",
-    "typescript": "^5.7.3",
-    "webpack": "^5.97.1",
-    "webpack-cli": "^6.0.1",
     "svelte-check": "^3.0.0",
     "svelte-preprocess": "^5.0.0",
-    "@rollup/plugin-typescript": "^11.0.0",
-    "tslib": "^2.5.0"
+    "ts-loader": "^9.5.2",
+    "tslib": "^2.5.0",
+    "typescript": "^5.7.3",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
   }
 }

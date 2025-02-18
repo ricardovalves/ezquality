@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import ollama from "ollama";
 
 export class SidebarProvider implements vscode.WebviewViewProvider {
   _view?: vscode.WebviewView;
@@ -37,6 +38,52 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     });
   }
 
+  public async createUnitTest(code:string) {
+    const system = "You are a seasoned developer. Given the code below, please generate a comprehensive unit test.";
+
+    let responseText = '';
+
+    let prompt = system + "\n" + code;
+
+    try {
+      const streamResponse = await ollama.chat({
+        model: 'deepseek-r1:latest',
+        messages: [{role: 'user', content: prompt}],
+        stream: true
+      });
+
+      for await (const part of streamResponse) {
+        responseText += part.message.content;
+        this._view?.webview.postMessage({command: 'chatResponse', text: responseText });
+      }
+    } catch (err) {
+      this._view?.webview.postMessage({command: 'chatResponse', text: `Error: ${String(err)}`});
+    }
+  }
+
+  public async explainCode(code:string) {
+    const system = "You are a seasoned developer. Given the code below, please explain what it does.";
+
+    let responseText = '';
+
+    let prompt = system + "\n" + code;
+
+    try {
+      const streamResponse = await ollama.chat({
+        model: 'deepseek-r1:latest',
+        messages: [{role: 'user', content: prompt}],
+        stream: true
+      });
+
+      for await (const part of streamResponse) {
+        responseText += part.message.content;
+        this._view?.webview.postMessage({command: 'chatResponse', text: responseText });
+      }
+    } catch (err) {
+      this._view?.webview.postMessage({command: 'chatResponse', text: `Error: ${String(err)}`});
+    }
+  }
+
   public revive(panel: vscode.WebviewView) {
     this._view = panel;
   }
@@ -51,21 +98,24 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     // const styleMainUri = webview.asWebviewUri(
     //   vscode.Uri.joinPath(this._extensionUri, "out", "compiled/sidebar.css")
     // );
-    // const styleVSCodeUri = webview.asWebviewUri(
-    //   vscode.Uri.joinPath(this._extensionUri, "media", "vscode.css")
-    // );
+    const styleVSCodeUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, "media", "vscode.css")
+    );
 
     // // Use a nonce to only allow a specific script to be run.
     // const nonce = getNonce();
 
-    return `<!DOCTYPE html>
+    return /*html*/`
+    <!DOCTYPE html>
 			<html lang="en">
-			<head>
-				<meta charset="UTF-8">
-				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <body>
-                <script src="${scriptUri}"></script>
-			</body>
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link href="${styleVSCodeUri}" rel="stylesheet">
+        </head>
+        <body>
+          <script src="${scriptUri}"></script>
+        </body>
 			</html>`;
   }
 }

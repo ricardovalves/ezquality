@@ -2,5 +2,15 @@
     import {onMount} from "svelte";
 </script>
 <main>
-    <h1>Hello World from Svelte</h1>
+    <h2>EZ Quality</h2>
+	<div id="response"></div>
+
+	<script>
+		window.addEventListener('message', event => {
+			const {command, text} = event.data;
+			if (command == 'chatResponse') {
+				document.getElementById('response').innerText = text;
+			}
+		});
+	</script>
 </main>

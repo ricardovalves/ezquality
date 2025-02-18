@@ -14,6 +14,32 @@ export function activate(context: vscode.ExtensionContext) {
 			sidebarProvider,
 		)
 	);
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand('ezquality.createUnitTest', () => {
+			const {activeTextEditor} = vscode.window;
+
+			if (!activeTextEditor) {
+				vscode.window.showInformationMessage("No active text editor");
+				return ;
+			}
+			const code = activeTextEditor.document.getText(activeTextEditor.selection);
+			sidebarProvider.createUnitTest(code);
+		})
+	);
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand('ezquality.explainCode', () => {
+			const {activeTextEditor} = vscode.window;
+
+			if (!activeTextEditor) {
+				vscode.window.showInformationMessage("No active text editor");
+				return ;
+			}
+			const code = activeTextEditor.document.getText(activeTextEditor.selection);
+			sidebarProvider.explainCode(code);
+		})
+	);
 }
 
 // This method is called when your extension is deactivated
