@@ -7,9 +7,22 @@
     "vscode": "^1.97.0"
   },
   "categories": [
+    "Programming Languages",
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:python",
+    "onLanguage:java",
+    "onLanguage:csharp",
+    "onLanguage:php",
+    "onLanguage:ruby",
+    "onLanguage:go",
+    "onLanguage:rust",
+    "onLanguage:c",
+    "onLanguage:cpp"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "viewsContainers": {
@@ -38,15 +51,38 @@
       },
       {
         "command": "ezquality.createUnitTest",
-        "title": "Create Unit Test",
+        "title": "EZQuality - Create Unit Test",
         "category": "EZ Quality"
       },
       {
         "command": "ezquality.explainCode",
-        "title": "Explain Code",
+        "title": "EZQuality - Explain Code",
+        "category": "EZ Quality"
+      },
+      {
+        "command": "ezquality.showMenu",
+        "title": "EZQuality - Shgow Menu",
         "category": "EZ Quality"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Method CodeLens",
+      "properties": {
+        "methodCodelens.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable method CodeLens"
+        }
+      }
+    },
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "ezquality.showMenu",
+          "when": "false"
+        }
+      ]    
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  .extension-container {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+  }
+  
+  .prompt-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .prompt-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+    min-height: 60px;
+  }
+  
+  .run-button {
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007acc;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .run-button:hover {
+    background-color: #005a9e;
+  }
+  
+  .output-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .output-box {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+  }
+  
+  .collapsible-header {
+    font-weight: bold;
+    margin-bottom: 6px;
+    cursor: pointer;
+    color: #007acc;
+    user-select: none;
+  }
+  
+  .collapsible-content {
+    font-size: 14px;
+    color: #555;
+    display: none; /* Collapsed by default */
+    overflow-y: auto;
+  }
+  
+  .output-label {
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+  
+  .output-content {
+    font-size: 14px;
+    color: #555;
+  }
