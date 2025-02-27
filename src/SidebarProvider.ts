@@ -3,6 +3,8 @@ import ollama from "ollama";
 
 export class SidebarProvider implements vscode.WebviewViewProvider {
   _view?: vscode.WebviewView;
+  
+  readonly model:string = "deepseek-coder";
 
   constructor(private readonly _extensionUri: vscode.Uri) {}
 
@@ -47,7 +49,7 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
 
     try {
       const streamResponse = await ollama.chat({
-        model: 'deepseek-r1:latest',
+        model: this.model,
         messages: [{role: 'user', content: prompt}],
         stream: true
       });
@@ -70,7 +72,7 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
 
     try {
       const streamResponse = await ollama.chat({
-        model: 'deepseek-r1:latest',
+        model: this.model,
         messages: [{role: 'user', content: prompt}],
         stream: true
       });
@@ -89,15 +91,9 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
   }
 
   private _getHtmlForWebview(webview: vscode.Webview) {
-    // const styleResetUri = webview.asWebviewUri(
-    //   vscode.Uri.joinPath(this._extensionUri, "media", "reset.css")
-    // );
     const scriptUri = webview.asWebviewUri(
       vscode.Uri.joinPath(this._extensionUri, "out", "compiled/Sidebar.js")
     );
-    // const styleMainUri = webview.asWebviewUri(
-    //   vscode.Uri.joinPath(this._extensionUri, "out", "compiled/sidebar.css")
-    // );
     const styleVSCodeUri = webview.asWebviewUri(
       vscode.Uri.joinPath(this._extensionUri, "media", "vscode.css")
     );
@@ -105,9 +101,6 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     const webViewCodeUri = webview.asWebviewUri(
       vscode.Uri.joinPath(this._extensionUri, "media", "webview.css")
     );
-
-    // // Use a nonce to only allow a specific script to be run.
-    // const nonce = getNonce();
 
     return /*html*/`
     <!DOCTYPE html>

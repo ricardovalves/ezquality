@@ -128,7 +128,6 @@ export class MethodCodeLensProvider implements vscode.CodeLensProvider {
     
     private findMethodEndIndex(text: string, methodStartIndex: number, languageId: string): number {
         // This is a simplified approach to find the end of a method
-        // For accurate results, a proper parser should be used
         
         // For languages with curly braces
         if (['javascript', 'typescript', 'java', 'csharp', 'cpp', 'c', 'php', 'go', 'rust'].includes(languageId)) {

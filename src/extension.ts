@@ -9,8 +9,9 @@ import { Ollama } from 'ollama';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-	registerCodeLensCommand(context);
-	registerCodeLens(context);
+	
+	registerCodeLensProvider(context);
+	registerShowMenuCommand(context);
 
 
 	// init sidebar
@@ -60,7 +61,7 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // Register the command that will be executed when the CodeLens is clicked
-function registerCodeLensCommand(context: vscode.ExtensionContext) {
+function registerShowMenuCommand(context: vscode.ExtensionContext) {
     let disposable = vscode.commands.registerCommand(
         'ezquality.showMenu',
         (uri: string, methodName: string, range: vscode.Range, fullMethodText: string) => {
@@ -97,7 +98,7 @@ function registerCodeLensCommand(context: vscode.ExtensionContext) {
     context.subscriptions.push(disposable);
 }
 
-function registerCodeLens(context: vscode.ExtensionContext) {
+function registerCodeLensProvider(context: vscode.ExtensionContext) {
 	
 	// Register the CodeLens provider for all languages
     const codelensProvider = new MethodCodeLensProvider();
