@@ -3,7 +3,6 @@
 import * as vscode from 'vscode';
 import { SidebarProvider } from './SidebarProvider';
 import { MethodCodeLensProvider } from './MethodCodeLensProvider';
-import { Ollama } from 'ollama';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -15,7 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 
 	// init sidebar
-	const sidebarProvider = new SidebarProvider(context.extensionUri);
+	const sidebarProvider = new SidebarProvider(context);
 	context.subscriptions.push(
 		vscode.window.registerWebviewViewProvider(
 			"ezquality-sidebar",

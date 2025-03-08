@@ -66,12 +66,17 @@
       }
     ],
     "configuration": {
-      "title": "Method CodeLens",
+      "title": "EZ Quality",
       "properties": {
         "methodCodelens.enabled": {
           "type": "boolean",
           "default": true,
           "description": "Enable/disable method CodeLens"
+        },
+        "ezquality.modelSelection": {
+          "type": "string",
+          "default": "deepseek-coder",
+          "description": "Select which model to use"
         }
       }
     },
@@ -81,7 +86,7 @@
           "command": "ezquality.showMenu",
           "when": "false"
         }
-      ]    
+      ]
     }
   },
   "scripts": {
@@ -112,7 +117,7 @@
     "eslint": "^9.19.0",
     "ollama": "^0.5.13",
     "rollup": "^3.15.0",
-    "rollup-plugin-css-only": "^4.3.0",
+    "rollup-plugin-css-only": "^4.5.2",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^7.1.2",
     "svelte": "^3.55.0",

@@ -25,5 +25,5 @@
 		"__sapper__/*",
 		"out/*"
 	],
-	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "webviews/components/**/*.svelte"]
+	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/store/**/*.ts", "webviews/components/**/*.svelte", "*.svelte"]
 }

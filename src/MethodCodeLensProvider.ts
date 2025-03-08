@@ -55,6 +55,11 @@ export class MethodCodeLensProvider implements vscode.CodeLensProvider {
         return codeLens;
     }
     
+    /**
+     * Identifies a method/function in the code.
+     * @param document 
+     * @returns 
+     */
     private findMethodsInDocument(document: vscode.TextDocument): Array<{ name: string, range: vscode.Range, fullText: string }> {
         const text = document.getText();
         const languageId = document.languageId;
@@ -126,6 +131,13 @@ export class MethodCodeLensProvider implements vscode.CodeLensProvider {
         return methods;
     }
     
+    /**
+     * 
+     * @param text Identifies the end of a method, according to the specificities of the underlying language
+     * @param methodStartIndex 
+     * @param languageId 
+     * @returns 
+     */
     private findMethodEndIndex(text: string, methodStartIndex: number, languageId: string): number {
         // This is a simplified approach to find the end of a method
         
@@ -191,6 +203,11 @@ export class MethodCodeLensProvider implements vscode.CodeLensProvider {
         return text.length;
     }
     
+    /**
+     * 
+     * @param text For indentation based languages (python for instance), assess the indentation level
+     * @returns 
+     */
     private getIndentationLevel(text: string): number {
         let spaces = 0;
         for (let i = 0; i < text.length; i++) {

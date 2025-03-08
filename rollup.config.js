@@ -6,6 +6,7 @@ import sveltePreprocess from 'svelte-preprocess';
 import typescript from "@rollup/plugin-typescript";
 import path from "path";
 import fs from "fs";
+import css from 'rollup-plugin-css-only';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -29,6 +30,8 @@ export default fs
             dev: !production,
 			    }
 		    }),
+
+        css({ output: `${name}.css` }),
         
         // If you have external dependencies installed from
         // npm, you'll most likely need these plugins. In
